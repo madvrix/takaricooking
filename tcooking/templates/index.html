@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  
+  .featured-item{
+    height: 80%;
+    width: 100%;
+  }
+  .img-a{
+    height: 100%;
+  }
+  .img-a img{
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+  }
+</style>
+  <!--================Featured Section Start =================-->
+
+<section class="section-margin mb-lg-100">
+    <div style="padding-left: 10%">
+        <h2>Resep Rekomendasi</h2>
+    </div>
+    <div class="container">
+      
+        
+      <br>
+      <div class="bg-1st">
+      <div class="owl-carousel owl-theme featured-carousel">
+       
+        {% for d in reck %}
+        <div class="featured-item">
+          <div class="img-a">
+            <img src="media/{{d.foto}}">
+          </div>
+          
+          <div class="item-body">
+            <div class="d-flex justify-content-between">
+              <a href="{{d.id}}detailrekomen">
+                  <h3>{{d.nama}}</h3>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  </div>
+  <!--================Featured Section End =================-->
+
+  <!--================Food menu section start =================-->  
+  <section class="section-margin">
+    <div class="container">
+      <div class="section-intro mb-75px">
+        <h4 class="intro-title">Resep</h4>
+        <h2>List semua resep</h2>
+      </div>
+      <div class="row">
+        {% for x in rec %}
+        <div class="col-lg-6">
+          <div class="media align-items-center food-card">
+            <img src="media/{{x.foto}}" alt="">
+            
+              
+                <a href="{{x.id}}detail">
+                  <h3 class="nm">{{x.nama}}</h3>
+                </a>
+              
+            
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!--================Food menu section end =================-->  
+
+
+
+
+
+{% endblock %}

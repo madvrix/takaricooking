@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}{% block content %}
+{%load crispy_forms_tags %}
+{% if registered %}
+
+
+    <div class="container">
+        <div class="row">
+            <div style="margin-top: 10px; margin-left: 360px; width: 100%" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Pendaftaran Berhasil!</h3>
+                        <a href="user_login" class="btn btn-primary">Login</a>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    <div class="container">
+        <div class="row">
+            <div style="margin-top: 10px; margin-left: 360px;" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Create New Account</h3>
+                    </div>
+                    <div class="card-body">
+                        <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        {{ user_form|crispy }}
+                        {{ profile_form|crispy }}
+                         <input type="submit" name="" value="Register">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

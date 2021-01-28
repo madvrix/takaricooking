@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <!--================Food menu section start =================-->  
+  <section class="section-margin">
+    <div class="container">
+      <div class="section-intro mb-75px">
+        <h4 class="intro-title">Resep</h4>
+        <h2>Cari Resep</h2>
+      </div>
+      <!--================Search=================-->
+      <aside class="single_sidebar_widget search_widget">
+        <form action="{% url 'cari' %}" method="GET">
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <input class="form-control" name="katakunci" type="text" placeholder="Search" aria-label="Search" required>
+              <div class="input-group-append">
+                <button class="btn"  type="submit"><i class="ti-search"></i></button>
+              </div>
+            </div>
+          </div>
+          </form>
+        </aside>
+        
+        <!--================Search end =================-->
+        <div class="row">
+        {% for j in listres %}
+        <div class="col-lg-6">
+          <a href="{{j.id}}detail">
+            <div class="media align-items-center food-card">
+              <img class="mr-3 mr-sm-4" src="media/{{j.foto}}" alt="">
+              <div class="media-body">
+                <div class="d-flex justify-content-between food-card-title">
+                  <h4>{{j.nama}}</h4>
+                </div>
+                
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+        
+        </div>
+      </div>
+    </section>
+  <!--================Food menu section end =================-->  
+
+
+ 
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .row img{
+    width: 50%;
+    height: 30%;
+  }
+  .detail-res{
+    padding-left: 10%;
+  }
+  .detail-video{
+    padding-top: 15%;
+    width: 100%;
+  }
+</style>
+  <!--================Hero Banner Section start =================-->
+  <section class="hero-banner hero-banner-sm">
+    <div class="hero-wrapper">
+        <div class="hero-left">
+            <h1 class="hero-title">{{rekom2.nama}}</h1>
+            {% if masuk == True %}
+            <form method="post" action="{{rekom2.id}}favoritrc">
+                {% csrf_token %}
+                <input type="submit" name="" value="+Favorit">
+            </form>
+            {% endif %}
+            <p>
+              {{rekom2.keterangan|linebreaks}}
+            </p>
+          </div>  
+        <div class="hero-right">
+
+          <video class="detail-video" controls>
+            <source src="media/{{rekom2.video}}" type="video/mp4">
+            Browser is ugly
+          </video>
+        </div>
+    </div>
+  </section>
+  <!--================Hero Banner Section end =================-->
+   <!--================Chef section start =================-->  
+   <section class="section-margin">
+      <div class="container">
+        <div class="section-intro mb-75px">
+          <h2 class="intro-title">Macam Macam Bahan yang diperlukan</h2>
+          
+        </div>
+        <div class="row">
+          <img class="detail-img" src="media/{{rekom2.foto}}" alt="">
+          
+            <h4 class="detail-res">
+               {{rekom2.resep|linebreaks}}
+            </h4>
+        </div>
+      </div>
+    </section>
+    <!--================Chef section end =================-->  
+ 
+
+
+{% endblock %}
